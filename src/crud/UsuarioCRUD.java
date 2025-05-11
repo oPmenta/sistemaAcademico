@@ -65,13 +65,21 @@ public class UsuarioCRUD extends CRUDManager<Usuario> {
     public void listarUsuarios() {
         System.out.println("\n=== USUARIOS CADASTRADOS ===");
         for (Usuario usuario : registros) {
-            if (usuario != null && usuario.getPessoa() != null && usuario.getEscola() != null) {
-                System.out.println("ID (Pessoa): " + usuario.getPessoa().getId() + " | ID (Escola): " + usuario.getEscola().getId() + " | Tipo: " + usuario.getTipo());
-            } else {
-                System.out.println("Erro: Dados inválidos ou nulos para usuário com ID: " + usuario.getId());
+            if (usuario != null) {
+                // Verifica se pessoa e escola não são nulos
+                if (usuario.getPessoa() == null || usuario.getEscola() == null) {
+                    System.out.println("Erro: Dados incompletos para usuário com ID: " + usuario.getId());
+                    continue; // Pula para o próximo usuário
+                }
+
+                System.out.println(
+                        "ID: " + usuario.getId()
+                        + " | Pessoa: " + usuario.getPessoa().getNome()
+                        + " | Escola: " + usuario.getEscola().getNome()
+                        + " | Tipo: " + usuario.getTipo()
+                );
             }
         }
-
     }
 
     public void atualizarViaConsole(Scanner scanner) {
@@ -100,7 +108,7 @@ public class UsuarioCRUD extends CRUDManager<Usuario> {
             return;
         }
 
-        System.out.print("Novo Tipo: ");
+        System.out.print("Novo Tipo (ADMIN_GERAL, ADMIN_ESCOLA, PROFESSOR): ");
         String tipo = scanner.nextLine().toUpperCase();
         if (!tipo.matches("ADMIN_GERAL|ADMIN_ESCOLA|PROFESSOR")) {
             System.out.println("Erro: Tipo inválido!");
@@ -120,5 +128,41 @@ public class UsuarioCRUD extends CRUDManager<Usuario> {
         int idParaDeletar = Integer.parseInt(scanner.nextLine());
         deletar(idParaDeletar);
         System.out.println("Usuario deletado com sucesso!");
+    }
+
+    public void vincularUsuarioEscola(Scanner scanner, int escolaId) {
+        System.out.print("ID da Pessoa a ser vinculada: ");
+        int pessoaId = Integer.parseInt(scanner.nextLine());
+        Pessoa pessoa = pessoaCRUD.buscarPorId(pessoaId);
+
+        if (pessoa == null) {
+            System.out.println("Erro: Pessoa não encontrada!");
+            return;
+        }
+
+        System.out.print("Tipo do Usuário (ADMIN_ESCOLA, PROFESSOR): ");
+        String tipo = scanner.nextLine().toUpperCase();
+
+        // Cria o usuário vinculado à escola do ADMIN_ESCOLA
+        criar(new Usuario(ultimoId + 1, pessoa, escolaCRUD.buscarPorId(escolaId), tipo));
+        System.out.println("Usuário vinculado à escola com ID: " + ultimoId);
+    }
+
+    public void listarUsuariosDaEscola(int escolaId) {
+        System.out.println("\n=== USUÁRIOS VINCULADOS À ESCOLA ===");
+        registros.stream()
+                .filter(u -> u.getEscola().getId() == escolaId)
+                .forEach(u -> System.out.println(
+                "ID: " + u.getId()
+                + " | Nome: " + u.getPessoa().getNome()
+                + " | Tipo: " + u.getTipo()
+        ));
+    }
+
+    public void deletarUsuarioEscola(Scanner scanner) {
+        System.out.print("ID do Usuário para remover vínculo: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        deletar(id);
+        System.out.println("Vínculo removido com sucesso!");
     }
 }

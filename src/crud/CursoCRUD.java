@@ -38,13 +38,43 @@ public class CursoCRUD extends CRUDManager<Curso> {
         criar(new Curso(ultimoId + 1, nome, sigla, tipo));
         System.out.println("Curso criado com ID: " + ultimoId);
     }
+    
+    public void atualizarViaConsole(Scanner scanner) {
+        System.out.print("Digite o ID do curso que deseja atualizar: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        Curso curso = buscarPorId(id);
+
+        if (curso != null) {
+            System.out.print("Novo nome do curso: ");
+            String nome = scanner.nextLine();
+            System.out.print("Nova sigla: ");
+            String sigla = scanner.nextLine();
+            System.out.print("Novo tipo (SUPERIOR, INTEGRADO, CONCOMITANTE): ");
+            String tipo = scanner.nextLine().toUpperCase();
+
+            curso.setNome(nome);
+            curso.setSigla(sigla);
+            curso.setTipo(tipo);
+            atualizar(curso);
+            System.out.println("Curso atualizado com sucesso!");
+        } else {
+            System.out.println("Curso não encontrado!");
+        }
+    }
 
     public void listarCursos() {
         System.out.println("\n=== CURSOS CADASTRADOS ===");
         for (Curso curso : registros) {
             if (curso != null) {
-                System.out.println("ID: " + curso.getId() + " | " + curso.getNome() + " (" + curso.getSigla() + ") - " + curso.getTipo());
+                System.out.println("ID: " + curso.getId() + " | Nome: " + curso.getNome() + " (" + curso.getSigla() + ")");
             }
         }
+    }
+
+    public void deletarViaConsole(Scanner scanner) {
+        System.out.print("Digite o ID do curso que deseja deletar: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        deletar(id);
+        System.out.println("Curso deletado com sucesso!");
     }
 }
