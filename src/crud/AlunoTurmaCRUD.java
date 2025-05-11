@@ -13,6 +13,7 @@ import java.util.Scanner;
  * @author User
  */
 public class AlunoTurmaCRUD extends CRUDManager<AlunoTurma> {
+
     private final AlunoCRUD alunoCRUD;
     private final TurmaCRUD turmaCRUD;
 

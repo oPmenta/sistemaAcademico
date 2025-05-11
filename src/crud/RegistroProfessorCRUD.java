@@ -7,11 +7,13 @@ package crud;
 import model.RegistroProfessor;
 import model.Usuario;
 import java.util.Scanner;
+
 /**
  *
  * @author User
  */
 public class RegistroProfessorCRUD extends CRUDManager<RegistroProfessor> {
+
     private final UsuarioCRUD usuarioCRUD;
 
     public RegistroProfessorCRUD(UsuarioCRUD usuarioCRUD) {
@@ -42,4 +44,3 @@ public class RegistroProfessorCRUD extends CRUDManager<RegistroProfessor> {
         System.out.println("Registro criado com ID: " + ultimoId);
     }
 }
-

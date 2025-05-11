@@ -4,7 +4,6 @@
  */
 package crud;
 
-
 import model.*;
 import java.util.Scanner;
 

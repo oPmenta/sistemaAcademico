@@ -9,6 +9,7 @@ package model;
  * @author User
  */
 public class Pessoa extends EntidadeBase {
+
     private String nome;
     private String nascimento;
     private String telefone;
@@ -23,14 +24,48 @@ public class Pessoa extends EntidadeBase {
     }
 
     // Getters e Setters
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-    public String getNascimento() { return nascimento; }
-    public void setNascimento(String nascimento) { this.nascimento = nascimento; }
-    public String getTelefone() { return telefone; }
-    public void setTelefone(String telefone) { this.telefone = telefone; }
-    public String getLogin() { return login; }
-    public void setLogin(String login) { this.login = login; }
-    public String getSenha() { return senha; }
-    public void setSenha(String senha) { this.senha = senha; }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(String nascimento) {
+        this.nascimento = nascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{id=" + getId() + ", nome='" + nome + "', nascimento='" + nascimento + "', telefone='" + telefone + "', login='" + login + "', senha='" + senha + "'}";
+    }
 }

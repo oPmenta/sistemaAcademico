@@ -9,6 +9,7 @@ package model;
  * @author User
  */
 public class AlunoTurma extends EntidadeBase {
+
     private Aluno aluno;
     private Turma turma;
 
@@ -19,8 +20,19 @@ public class AlunoTurma extends EntidadeBase {
     }
 
     // Getters e Setters
-    public Aluno getAluno() { return aluno; }
-    public void setAluno(Aluno aluno) { this.aluno = aluno; }
-    public Turma getTurma() { return turma; }
-    public void setTurma(Turma turma) { this.turma = turma; }
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
 }

@@ -9,6 +9,7 @@ package model;
  * @author User
  */
 public class Turma extends EntidadeBase {
+
     private String nome;
     private Curso curso;
     private Escola escola;
@@ -25,14 +26,43 @@ public class Turma extends EntidadeBase {
     }
 
     // Getters e Setters
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-    public Curso getCurso() { return curso; }
-    public void setCurso(Curso curso) { this.curso = curso; }
-    public Escola getEscola() { return escola; }
-    public void setEscola(Escola escola) { this.escola = escola; }
-    public String getPeriodo() { return periodo; }
-    public void setPeriodo(String periodo) { this.periodo = periodo; }
-    public boolean isAtiva() { return ativa; }
-    public void setAtiva(boolean ativa) { this.ativa = ativa; }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public Escola getEscola() {
+        return escola;
+    }
+
+    public void setEscola(Escola escola) {
+        this.escola = escola;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
+    }
 }

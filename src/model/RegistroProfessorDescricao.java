@@ -9,6 +9,7 @@ package model;
  * @author User
  */
 public class RegistroProfessorDescricao extends EntidadeBase {
+
     private RegistroProfessor registro;
     private Aluno aluno;
     private String observacao;
@@ -21,10 +22,27 @@ public class RegistroProfessorDescricao extends EntidadeBase {
     }
 
     // Getters e Setters
-    public RegistroProfessor getRegistro() { return registro; }
-    public void setRegistro(RegistroProfessor registro) { this.registro = registro; }
-    public Aluno getAluno() { return aluno; }
-    public void setAluno(Aluno aluno) { this.aluno = aluno; }
-    public String getObservacao() { return observacao; }
-    public void setObservacao(String observacao) { this.observacao = observacao; }
+    public RegistroProfessor getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(RegistroProfessor registro) {
+        this.registro = registro;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
 }

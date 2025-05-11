@@ -4,50 +4,59 @@
  */
 package crud;
 
-import model.EntidadeBase;
-import util.DataUtil;
 import java.util.ArrayList;
 import java.util.List;
+import model.EntidadeBase;
+import util.DataUtil;
 
 /**
  *
  * @author User
+ * @param <T>
  */
 public abstract class CRUDManager<T extends EntidadeBase> {
-    protected List<T> registros;
+
+    protected List<T> registros = new ArrayList<>();
     protected int ultimoId = 0;
 
     public CRUDManager() {
-        registros = new ArrayList<>();
+    }
+
+    // Adicione este método para acessar os registros
+    public List<T> getRegistros() {
+        return registros;
     }
 
     public void criar(T entidade) {
         entidade.setId(++ultimoId);
         entidade.setDataCriacao(DataUtil.getDataAtual());
-        registros.add(entidade);
+        registros.add(entidade);               // antes era registros[ultimoId-1] = entidade;
     }
 
     public T buscarPorId(int id) {
-        for (T registro : registros) {
-            if (registro.getId() == id) return registro;
+        for (T registro : registros) {         // a iteração por List<T> funciona igual
+            if (registro != null && registro.getId() == id) {
+                return registro;
+            }
         }
         return null;
     }
 
     public void atualizar(T entidade) {
         entidade.setDataModificacao(DataUtil.getDataAtual());
-        for (int i = 0; i < registros.size(); i++) {
-            if (registros.get(i).getId() == entidade.getId()) {
-                registros.set(i, entidade);
-                break;
-            }
+        // antes: registros[entidade.getId()-1] = entidade;
+        // agora substituímos o elemento na posição correta:
+        int idAtualizar = entidade.getId() - 1;
+        if (idAtualizar >= 0 && idAtualizar < registros.size()) {
+            registros.set(idAtualizar, entidade);
         }
     }
 
     public void deletar(int id) {
-        registros.removeIf(registro -> registro.getId() == id);
+        int idDeletar = id - 1;
+        if (idDeletar >= 0 && idDeletar < registros.size()) {
+            registros.remove(idDeletar);              // remove e ?encolhe? a lista
+        }
     }
 
-    public List<T> getRegistros() { return registros; }
 }
-

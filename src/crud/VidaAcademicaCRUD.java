@@ -13,6 +13,7 @@ import java.util.Scanner;
  * @author User
  */
 public class VidaAcademicaCRUD extends CRUDManager<VidaAcademica> {
+
     private final AlunoCRUD alunoCRUD;
 
     public VidaAcademicaCRUD(AlunoCRUD alunoCRUD) {

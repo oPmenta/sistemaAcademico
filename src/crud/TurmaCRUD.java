@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author User
  */
 public class TurmaCRUD extends CRUDManager<Turma> {
+
     private final EscolaCRUD escolaCRUD;
     private final CursoCRUD cursoCRUD;
 
@@ -20,12 +21,7 @@ public class TurmaCRUD extends CRUDManager<Turma> {
         this.cursoCRUD = cursoCRUD;
     }
 
-    public void criarViaConsole(Scanner scanner, Usuario usuarioLogado) {
-        if (!usuarioLogado.getTipo().equals("ADMIN_ESCOLA")) {
-            System.out.println("Acesso negado! Apenas ADMIN_ESCOLA.");
-            return;
-        }
-
+    public void criarViaConsole(Scanner scanner) {
         System.out.print("Nome da Turma: ");
         String nome = scanner.nextLine();
         if (nome.isBlank()) {
@@ -33,14 +29,16 @@ public class TurmaCRUD extends CRUDManager<Turma> {
             return;
         }
 
-        Escola escola = usuarioLogado.getEscola(); // Escola vinculada ao usuário
+        System.out.print("ID da Escola: ");
+        int idEscola = validarID(scanner);
+        Escola escola = escolaCRUD.buscarPorId(idEscola);
         if (escola == null) {
             System.out.println("Erro: Escola não encontrada!");
             return;
         }
 
         System.out.print("ID do Curso: ");
-        int idCurso = Integer.parseInt(scanner.nextLine());
+        int idCurso = validarID(scanner);
         Curso curso = cursoCRUD.buscarPorId(idCurso);
         if (curso == null) {
             System.out.println("Erro: Curso não encontrado!");
@@ -51,12 +49,11 @@ public class TurmaCRUD extends CRUDManager<Turma> {
         System.out.println("Turma criada com ID: " + ultimoId);
     }
 
-    public void gerarRelatorioTurmas(Escola escola) {
-        System.out.println("\n=== RELATÓRIO DE TURMAS ===");
-        for (Turma turma : registros) {
-            if (turma.getEscola().getId() == escola.getId()) {
-                System.out.println("ID: " + turma.getId() + " | Nome: " + turma.getNome() + " | Curso: " + turma.getCurso().getNome());
-            }
+    private int validarID(Scanner scanner) {
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
         }
     }
 }

@@ -9,6 +9,7 @@ package model;
  * @author User
  */
 public class Aluno extends Pessoa {
+
     private String cpf;
     private String email;
 
@@ -19,8 +20,19 @@ public class Aluno extends Pessoa {
     }
 
     // Getters e Setters
-    public String getCpf() { return cpf; }
-    public void setCpf(String cpf) { this.cpf = cpf; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

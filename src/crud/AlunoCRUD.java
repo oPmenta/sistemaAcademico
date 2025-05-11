@@ -6,6 +6,7 @@ package crud;
 
 import model.Aluno;
 import java.util.Scanner;
+
 /**
  *
  * @author User
@@ -38,4 +39,3 @@ public class AlunoCRUD extends CRUDManager<Aluno> {
         System.out.println("Aluno criado com ID: " + ultimoId);
     }
 }
-
