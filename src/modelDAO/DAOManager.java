@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package crud;
+package modelDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +14,12 @@ import util.DataUtil;
  * @author User
  * @param <T>
  */
-public abstract class CRUDManager<T extends EntidadeBase> {
+public abstract class DAOManager<T extends EntidadeBase> {
 
     protected List<T> registros = new ArrayList<>();
     protected int ultimoId = 0;
 
-    public CRUDManager() {
+    public DAOManager() {
     }
 
     // Adicione este método para acessar os registros

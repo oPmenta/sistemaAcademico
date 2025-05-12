@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package crud;
+package modelDAO;
 
 import model.*;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author User
  */
-public class CursoCRUD extends CRUDManager<Curso> {
+public class CursoDAO extends DAOManager<Curso> {
 
     public void criarViaConsole(Scanner scanner) {
         System.out.print("Nome do Curso: ");

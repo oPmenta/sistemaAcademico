@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package crud;
+package modelDAO;
 
 import model.VidaAcademica;
 import model.Aluno;
@@ -12,18 +12,18 @@ import java.util.Scanner;
  *
  * @author User
  */
-public class VidaAcademicaCRUD extends CRUDManager<VidaAcademica> {
+public class VidaAcademicaDAO extends DAOManager<VidaAcademica> {
 
-    private final AlunoCRUD alunoCRUD;
+    private final AlunoDAO alunoDAO;
 
-    public VidaAcademicaCRUD(AlunoCRUD alunoCRUD) {
-        this.alunoCRUD = alunoCRUD;
+    public VidaAcademicaDAO(AlunoDAO alunoDAO) {
+        this.alunoDAO = alunoDAO;
     }
 
     public void criarViaConsole(Scanner scanner) {
         System.out.print("ID do Aluno: ");
         int idAluno = validarID(scanner);
-        Aluno aluno = alunoCRUD.buscarPorId(idAluno);
+        Aluno aluno = alunoDAO.buscarPorId(idAluno);
         if (aluno == null) {
             System.out.println("Erro: Aluno não encontrado!");
             return;

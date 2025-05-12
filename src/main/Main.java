@@ -4,8 +4,14 @@
  */
 package main;
 
+import modelDAO.TurmaDAO;
+import modelDAO.AlunoDAO;
+import modelDAO.AlunoTurmaDAO;
+import modelDAO.EscolaDAO;
+import modelDAO.PessoaDAO;
+import modelDAO.CursoDAO;
+import modelDAO.UsuarioDAO;
 import model.*;
-import crud.*;
 import java.util.Scanner;
 
 /**
@@ -15,13 +21,13 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static PessoaCRUD pessoaCRUD = new PessoaCRUD();
-    private static EscolaCRUD escolaCRUD = new EscolaCRUD();
-    private static CursoCRUD cursoCRUD = new CursoCRUD();
-    private static TurmaCRUD turmaCRUD = new TurmaCRUD(escolaCRUD, cursoCRUD);
-    private static UsuarioCRUD usuarioCRUD = new UsuarioCRUD(pessoaCRUD, escolaCRUD);
-    private static AlunoCRUD alunoCRUD = new AlunoCRUD();
-    private static AlunoTurmaCRUD alunoTurmaCRUD = new AlunoTurmaCRUD(alunoCRUD, turmaCRUD);
+    private static PessoaDAO pessoaCRUD = new PessoaDAO();
+    private static EscolaDAO escolaCRUD = new EscolaDAO();
+    private static CursoDAO cursoCRUD = new CursoDAO();
+    private static TurmaDAO turmaCRUD = new TurmaDAO(escolaCRUD, cursoCRUD);
+    private static UsuarioDAO usuarioCRUD = new UsuarioDAO(pessoaCRUD, escolaCRUD);
+    private static AlunoDAO alunoDAO = new AlunoDAO();
+    private static AlunoTurmaDAO alunoTurmaCRUD = new AlunoTurmaDAO(alunoDAO, turmaCRUD);
     private static Usuario usuarioLogado;
 
     public static void main(String[] args) {
@@ -269,16 +275,16 @@ public class Main {
 
                         switch (opcaoMenuAluno) { // Use a nova variável aqui
                             case 1:
-                                alunoCRUD.criarViaConsole(scanner);
+                                alunoDAO.criarViaConsole(scanner);
                                 break;
                             case 2:
-                                alunoCRUD.atualizarViaConsole(scanner);
+                                alunoDAO.atualizarViaConsole(scanner);
                                 break;
                             case 3:
-                                alunoCRUD.listarAlunos();
+                                alunoDAO.listarAlunos();
                                 break;
                             case 4:
-                                alunoCRUD.deletarViaConsole(scanner);
+                                alunoDAO.deletarViaConsole(scanner);
                                 break;
                             case 5:
                                 flagAluno = 1; // Sair do loop

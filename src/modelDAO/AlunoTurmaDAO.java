@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package crud;
+package modelDAO;
 
 import model.*;
 import util.DataUtil;
@@ -12,13 +12,13 @@ import java.util.Scanner;
  *
  * @author User
  */
-public class AlunoTurmaCRUD extends CRUDManager<AlunoTurma> {
+public class AlunoTurmaDAO extends DAOManager<AlunoTurma> {
 
-    private final AlunoCRUD alunoCRUD;
-    private final TurmaCRUD turmaCRUD;
+    private final AlunoDAO alunoDAO;
+    private final TurmaDAO turmaCRUD;
 
-    public AlunoTurmaCRUD(AlunoCRUD alunoCRUD, TurmaCRUD turmaCRUD) {
-        this.alunoCRUD = alunoCRUD;
+    public AlunoTurmaDAO(AlunoDAO alunoDAO, TurmaDAO turmaCRUD) {
+        this.alunoDAO = alunoDAO;
         this.turmaCRUD = turmaCRUD;
     }
 
@@ -31,7 +31,7 @@ public class AlunoTurmaCRUD extends CRUDManager<AlunoTurma> {
             return;
         }
 
-        Aluno aluno = alunoCRUD.buscarPorId(idAluno);
+        Aluno aluno = alunoDAO.buscarPorId(idAluno);
         if (aluno == null) {
             System.out.println("Erro: Aluno não encontrado!");
             return;

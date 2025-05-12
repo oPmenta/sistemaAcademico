@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package crud;
+package modelDAO;
 
 import model.*;
 import java.util.Scanner;
@@ -11,12 +11,12 @@ import java.util.Scanner;
  *
  * @author User
  */
-public class UsuarioCRUD extends CRUDManager<Usuario> {
+public class UsuarioDAO extends DAOManager<Usuario> {
 
-    private final PessoaCRUD pessoaCRUD;
-    private final EscolaCRUD escolaCRUD;
+    private final PessoaDAO pessoaCRUD;
+    private final EscolaDAO escolaCRUD;
 
-    public UsuarioCRUD(PessoaCRUD pessoaCRUD, EscolaCRUD escolaCRUD) {
+    public UsuarioDAO(PessoaDAO pessoaCRUD, EscolaDAO escolaCRUD) {
         this.pessoaCRUD = pessoaCRUD;
         this.escolaCRUD = escolaCRUD;
     }

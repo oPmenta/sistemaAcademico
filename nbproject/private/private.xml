@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/sistema_academico3/sistema_academico/src/main/Main.java</file>
+            <file>file:/C:/Users/zaneg/Documents/GitHub/sistemaAcademico/src/model/DAO/DAOManager.java</file>
+            <file>file:/C:/Users/zaneg/Documents/GitHub/sistemaAcademico/src/main/Main.java</file>
+            <file>file:/C:/Users/zaneg/Documents/GitHub/sistemaAcademico/src/model/DAO/VidaAcademicaCRUD.java</file>
         </group>
     </open-files>
 </project-private>
